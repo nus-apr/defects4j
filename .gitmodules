@@ -1,3 +1,4 @@
 [submodule "instrumentation"]
 	path = instrumentation
 	url = git@github.com:nus-apr/defects4j-instrumented
+	branch = main
