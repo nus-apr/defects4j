@@ -1,0 +1,10 @@
+FROM rshariffdeen/arjae
+ADD . /setup/defects4j/Jsoup/Jsoup-43/
+RUN  bash -c 'groupadd -g 1011 cerberus' 
+RUN  bash -c "cut -d: -f1 /etc/passwd | xargs -i usermod -g cerberus {} "
+COPY --from=defects4j-jsoup-jsoup-43  /experiment /experiment
+COPY --from=defects4j-jsoup-jsoup-43  /logs /logs
+COPY --from=defects4j-jsoup-jsoup-43  /root/ /root/
+RUN mvn clean compile test -Drat.skip=true -f /experiment/defects4j/Jsoup/Jsoup-43//src/./pom.xml; return 0
+RUN  bash /setup/defects4j/Jsoup/Jsoup-43/deps.sh 
+ENTRYPOINT ["/bin/sh"]

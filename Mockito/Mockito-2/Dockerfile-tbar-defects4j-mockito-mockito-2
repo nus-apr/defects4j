@@ -1,0 +1,10 @@
+FROM mirchevmp/tbar-cerberus:latest
+ADD . /setup/defects4j/Mockito/Mockito-2/
+RUN  bash -c 'groupadd -g 1011 cerberus' 
+RUN  bash -c "cut -d: -f1 /etc/passwd | xargs -i usermod -g cerberus {} "
+COPY --from=defects4j-mockito-mockito-2  /experiment /experiment
+COPY --from=defects4j-mockito-mockito-2  /logs /logs
+COPY --from=defects4j-mockito-mockito-2  /root/ /root/
+RUN mvn clean compile test -Drat.skip=true -f /experiment/defects4j/Mockito/Mockito-2//src/./pom.xml; return 0
+RUN  bash /setup/defects4j/Mockito/Mockito-2/deps.sh 
+ENTRYPOINT ["/bin/sh"]
