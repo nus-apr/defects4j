@@ -25,6 +25,7 @@ else
 
     # Install defects4j
     cd /defects4j
+    cpanm -n Module::Pluggable
     cpanm --installdeps .
     ./init.sh
     export PATH="$PATH:/defects4j/framework/bin"
