@@ -2,7 +2,7 @@
 
 apt-get update -y && \
 apt-get install software-properties-common -y && \
-apt-get install -y openjdk-8-jdk \
+apt-get install -y openjdk-11-jdk \
             git \
             build-essential \
             subversion \
