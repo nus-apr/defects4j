@@ -25,6 +25,7 @@ else
 
     # Install defects4j
     cd /defects4j
+    git checkout d527ffd0d1040804abffcffe79250018859cd5e9
     cpanm -n Module::Pluggable
     cpanm --installdeps .
     ./init.sh

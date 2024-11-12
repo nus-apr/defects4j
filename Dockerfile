@@ -40,6 +40,8 @@ RUN git clone https://github.com/rjust/defects4j.git defects4j
 
 # ----------- Step 2. Initialize Defects4J ---------------------
 WORKDIR /defects4j
+# version 2.10
+RUN git checkout d527ffd0d1040804abffcffe79250018859cd5e9 
 RUN cpanm -n Module::Pluggable
 RUN cpanm --installdeps .
 RUN ./init.sh
