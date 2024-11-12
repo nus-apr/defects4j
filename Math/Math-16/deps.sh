@@ -22,9 +22,9 @@ else
     cd /
     # Clone the Defects4J repository
     git clone https://github.com/rjust/defects4j.git defects4j
-
     # Install defects4j
     cd /defects4j
+    git checkout 29d84487b1d3828a4ba7bdd0ed8110099c821883
     cpanm -n Module::Pluggable
     cpanm --installdeps .
     ./init.sh

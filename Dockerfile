@@ -10,7 +10,7 @@ RUN \
   apt-get update -y && \
   apt-get install software-properties-common -y && \
   apt-get update -y && \
-  apt-get install -y openjdk-11-jdk \
+  apt-get install -y openjdk-8-jdk \
                 git \
                 build-essential \
                 subversion \
@@ -23,7 +23,7 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 # Java version
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # Timezone
 ENV TZ=America/Los_Angeles
@@ -40,6 +40,7 @@ RUN git clone https://github.com/rjust/defects4j.git defects4j
 
 # ----------- Step 2. Initialize Defects4J ---------------------
 WORKDIR /defects4j
+RUN git checkout 29d84487b1d3828a4ba7bdd0ed8110099c821883
 RUN cpanm -n Module::Pluggable
 RUN cpanm --installdeps .
 RUN ./init.sh
