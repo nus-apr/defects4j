@@ -14,7 +14,10 @@ apt-get install -y openjdk-8-jdk \
 
 
 
+update-alternatives --install  /usr/bin/java java  /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java 2082
+
 if [ -d "/defects4j" ]; then
+
     echo "/defects4j directory already exists, skipping the setup."
     export PATH="$PATH:/defects4j/framework/bin"
     echo 'export PATH="/defects4j/framework/bin:${PATH}"' >> ~/.bashrc
